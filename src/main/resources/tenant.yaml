@@ -1,0 +1,17 @@
+tenants:
+  - name: KFC
+    email: info@kfc.com
+    city: New York
+    address:
+        street: 123 Main St
+        city: New York
+        state: NY
+        zip: 10001
+  - name: McDonalds
+    email: info@mcdonalds.com
+    city: Los Angeles
+    address:
+        street: 456 Main St
+        city: Los Angeles
+        state: CA
+        zip: 90001
