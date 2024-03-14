@@ -1,5 +1,7 @@
 package com.careerit.jfs.jdbc;
 
+import com.careerit.jfs.util.DbConnectionUtil;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

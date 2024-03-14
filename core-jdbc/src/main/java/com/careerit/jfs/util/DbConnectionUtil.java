@@ -1,4 +1,4 @@
-package com.careerit.jfs.jdbc;
+package com.careerit.jfs.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
