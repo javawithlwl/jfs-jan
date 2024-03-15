@@ -46,21 +46,40 @@ public class ContactServiceImpl implements ContactService{
 
     @Override
     public Contact updateMobile(long cid, String mobile) {
-        return null;
+        Contact existingContact = contactDao.selectContact(cid);
+        if(existingContact == null){
+            throw new IllegalArgumentException("Contact with given id does not exists");
+        }
+        if(mobile == null || mobile.isBlank() || mobile.length() != 10){
+            throw new IllegalArgumentException("Mobile can't be empty or null and should be 10 digits");
+        }
+        if(existingContact.getMobile().equals(mobile)){
+            throw new IllegalArgumentException("Mobile is same as existing mobile");
+        }
+        if(contactDaoUtil.isMobileExists(mobile) && !existingContact.getMobile().equals(mobile)){
+            throw new IllegalArgumentException("Mobile already exists, please provide different mobile");
+        }
+        return contactDao.updateMobile(cid,mobile);
     }
 
     @Override
     public boolean deleteContact(long cid) {
-        return false;
+        if(contactDao.selectContact(cid) == null){
+            throw new IllegalArgumentException("Contact with given id does not exists");
+        }
+        return contactDao.deleteContact(cid);
     }
 
     @Override
     public List<Contact> getAllContacts() {
-        return null;
+        return contactDao.selectContacts();
     }
 
     @Override
     public List<Contact> search(String str) {
-        return null;
+        if(str == null || str.isBlank()){
+            throw new IllegalArgumentException("Search string can't be empty or null");
+        }
+        return contactDao.search(str);
     }
 }
