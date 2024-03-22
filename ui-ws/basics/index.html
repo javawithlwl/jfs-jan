@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to HTML World</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+
+    <p class="sub-heading" id="pagetop">Heading</p>
+    <h1>My First Heading</h1>
+    <h2>My Second Heading</h2>
+    <h3>My Third Heading</h3>
+    <h4>My Fourth Heading</h4>
+    <h5>My Fifth Heading</h5>
+    <h6>My Sixth Heading</h6>
+    <p class="sub-heading">Paragraph</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ab corporis. Quod, architecto? Maiores
+        dignissimos ipsum error facilis iste repellat quia repellendus asperiores fugiat dolor, natus harum officiis
+        iusto itaque.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores omnis atque quis, labore iste voluptates, ea
+        officia natus voluptatum quae recusandae qui. Porro facere natus ducimus quibusdam! Atque, nam ducimus.</p>
+    <p class="sub-heading">Table</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>Jane</td>
+                <td>Doe</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="student-report" class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th colspan="4" id="main">Student Report</th>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Profile</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>25</td>
+                <td><a href="profile.html">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>Jane</td>
+                <td>Doe</td>
+                <td>24</td>
+                <td><a href="profile.html">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>25</td>
+                <td><a href="profile.html">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>Jane</td>
+                <td>Doe</td>
+                <td>24</td>
+                <td><a href="profile.html">View Profile</a></td>
+            </tr>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>25</td>
+                <td><a href="profile.html">View Profile</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="sub-heading">Hyper Link</p>
+    
+    <a href="https://www.google.com" target="_blank">Google</a> <br/>
+    <a href="https://www.facebook.com" target="_blank">Facebook</a><br/>
+    <a href="https://www.twitter.com" target="_blank">Twitter</a> <br/>
+    <a href="aboutus.html" target="_blank">About Us</a>
+    <p class="sub-heading">List Items</p>
+    <ul type="circle">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+    <ol type="1">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ol>
+    <ul>
+        <li>
+            Java
+            <ol>
+                <li>Java 1.1</li>
+                <li>Java 1.2</li>
+                <li>Java 1.3</li>
+                <li>Java 1.4</li>
+                <li>Java 1.5</li>
+            </ol>
+        </li>
+        <li>
+            Python
+            <ol>
+                <li>Python 1.1</li>
+                <li>Python 1.2</li>
+                <li>Python 1.3</li>
+                <li>Python 1.4</li>
+                <li>Python 1.5</li>
+            </ol>
+        </li>
+        <li>
+            PHP
+            <ol>
+                <li>PHP 1.1</li>
+                <li>PHP 1.2</li>
+                <li>PHP 1.3</li>
+                <li>PHP 1.4</li>
+                <li>PHP 1.5</li>
+            </ol>
+        </li>
+        
+    </ul>
+    <p class="sub-heading">Images/Videos</p>
+    <img src="images/pic_bulboff.gif" alt="Image 1"/>
+    <img src="images/pic_bulbon.gif" alt="Image 2"/>
+    <video width="320" height="240" controls>
+        <source src="videos/mov_bbb.mp4" type="video/mp4">
+        <source src="videos/mov_bbb.ogg" type="video/ogg">
+        Your browser does not support the video tag.
+    </video>
+    <p class="sub-heading">Forms</p>
+    <form action="#" method="POST">
+        <div class="mb-3">
+            <label for="fname" class="form-label">First Name:</label>
+            <input type="text" id="fname" name="fname" class="form-control">
+        </div>
+        <p>
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname">
+        </p>
+        <p>
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age">
+        </p>
+        <p>
+            <label for="gender">Gender:</label>
+            <input type="radio" id="gender" name="gender">Male
+            <input type="radio" id="gender" name="gender">Female
+        </p>
+        <p>
+            <label for="country">Country:</label>
+            <select id="country" name="country" class="form-select">
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+            </select>
+        </p>
+        <p>
+            <label for="hobbies">Hobbies:</label>
+            <input type="checkbox" id="hobbies" name="hobbies">Reading
+            <input type="checkbox" id="hobbies" name="hobbies">Writing
+            <input type="checkbox" id="hobbies" name="hobbies">Playing
+            <input type="checkbox" id="hobbies" name="hobbies">Singing
+            <input type="checkbox" id="hobbies" name="hobbies">Dancing
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </p>
+        <p>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Enter more details"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </p>
+
+    </form>
+    <a href="#pagetop">Main-Content</a>
+    </div>  
+</body>
+
+</html>
