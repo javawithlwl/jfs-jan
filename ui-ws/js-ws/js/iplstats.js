@@ -8,10 +8,94 @@ function loadPlayers(){
             let teamNames = getTeamNames(players);
             showTeamNames(teamNames);
             showIplStats(players);
+            showTeamStats(players);
         });
         
     });
 }
+
+function showTeamStats(players){
+    let teamAmountMap = new Map();
+    let roleAmountMap = new Map();
+    let roleCountMap = new Map();
+    players.forEach(player => {
+        if(teamAmountMap.has(player.teamName)){
+            let amount = teamAmountMap.get(player.teamName);
+            teamAmountMap.set(player.teamName, amount + player.amount);
+        }else{
+            teamAmountMap.set(player.teamName, player.amount);
+        }
+        if(roleAmountMap.has(player.role)){
+            let amount = roleAmountMap.get(player.role);
+            roleAmountMap.set(player.role, amount + player.amount);
+        }else{
+            roleAmountMap.set(player.role, player.amount);
+        }
+        if(roleCountMap.has(player.role)){
+            let count = roleCountMap.get(player.role);
+            roleCountMap.set(player.role, count + 1);
+        }else{
+            roleCountMap.set(player.role, 1);
+        }
+    });
+    showTeamAmountStatsDetails(teamAmountMap);
+    showRoleAmountStatsDetails(roleAmountMap);
+    showRoleCountStatsDetails(roleCountMap);
+
+}
+
+function showRoleCountStatsDetails(roleCountMap){
+    let inputData = [['Role', 'Count']];
+    
+    roleCountMap.forEach((value, key) => {
+        inputData.push([key, value]);
+    }); 
+    console.log(inputData);
+    var data = google.visualization.arrayToDataTable(inputData);
+    var options = {
+    title: 'Role Count Stats',
+    width: 400,
+    height: 300,
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('idRoleCountStats'));
+    chart.draw(data, options);
+}
+
+function showRoleAmountStatsDetails(roleAmountMap){
+         let inputData = [['Role', 'Amount']];
+    
+          roleAmountMap.forEach((value, key) => {
+                inputData.push([key, value]);
+          }); 
+          console.log(inputData);
+          var data = google.visualization.arrayToDataTable(inputData);
+          var options = {
+          title: 'Role Stats',
+          width: 400,
+          height: 300,
+          };
+          var chart = new google.visualization.PieChart(document.getElementById('idRoleAmountStats'));
+          chart.draw(data, options);
+}
+
+function showTeamAmountStatsDetails(teamAmountMap){
+       let inputData = [['Team', 'Amount']];
+
+        teamAmountMap.forEach((value, key) => {
+            inputData.push([key, value]);
+        }); 
+        console.log(inputData);
+        var data = google.visualization.arrayToDataTable(inputData);
+        var options = {
+        title: 'Team Stats',
+        width: 400,
+        height: 300,
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById('idTeamAmountStats'));
+        chart.draw(data, options);
+       
+}
+
 function showIplStats(players){
    showTeamAmountStats(players);
    showRoleAmountStats(players);
