@@ -10,3 +10,4 @@ function showBrowserInfo(){
     let txt = "<p>User-agent header: " + navigator.userAgent + "</p>";
     document.getElementById('idShowBrowserInfo').innerHTML = txt;
 }
+
