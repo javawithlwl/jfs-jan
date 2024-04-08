@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="userDataController" class="com.careerit.di.ex.UserDataController">
+        <property name="userDataService" ref="userDataService"/>
+    </bean>
+
+    <bean id="userDataService" class="com.careerit.di.ex.UserDataService">
+        <property name="userDataDao" ref="userDataDao"/>
+    </bean>
+
+    <bean id="userDataDao" class="com.careerit.di.ex.UserDataDao">
+        <property name="dbConfiguration" ref="dbConfiguration"/>
+    </bean>
+
+    <bean id="dbConfiguration" class="com.careerit.di.ex.DbConfiguration"/>
+</beans>
