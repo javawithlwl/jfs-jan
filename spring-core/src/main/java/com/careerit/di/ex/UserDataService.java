@@ -1,19 +1,19 @@
 package com.careerit.di.ex;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
 public class UserDataService {
 
 
-    private UserDataDao userDataDao;
+    private final UserDataDao userDataDao;
+
 
     public String dbVersion() {
         return userDataDao.getDbVersion();
     }
 
-    public UserDataDao getUserDataDao() {
-        return userDataDao;
-    }
 
-    public void setUserDataDao(UserDataDao userDataDao) {
-        this.userDataDao = userDataDao;
-    }
 }

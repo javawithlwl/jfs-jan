@@ -1,18 +1,18 @@
 package com.careerit.di.ex;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@RequiredArgsConstructor
 public class UserDataDao {
 
-       private DbConfiguration dbConfiguration;
+    private final DbConfiguration dbConfiguration;
 
-        public String getDbVersion(){
-            return dbConfiguration.getDbVersion();
-        }
 
-    public DbConfiguration getDbConfiguration() {
-        return dbConfiguration;
+    public String getDbVersion() {
+        return dbConfiguration.getDbVersion();
     }
 
-    public void setDbConfiguration(DbConfiguration dbConfiguration) {
-        this.dbConfiguration = dbConfiguration;
-    }
+
 }

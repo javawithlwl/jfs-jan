@@ -1,19 +1,17 @@
 package com.careerit.di.ex;
 
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
 public class UserDataController {
 
+    private final UserDataService userDataService;
 
-    private UserDataService userDataService;
-
-    public String dbVersion(){
+    public String dbVersion() {
         return userDataService.dbVersion();
     }
 
-    public UserDataService getUserDataService() {
-        return userDataService;
-    }
-
-    public void setUserDataService(UserDataService userDataService) {
-        this.userDataService = userDataService;
-    }
 }
