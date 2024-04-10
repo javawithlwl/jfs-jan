@@ -1,6 +1,6 @@
 package com.careerit.di.invoice;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class AccountServiceMapping {
-        @Autowired
-        private ServiceManager serviceManager;
-        @Autowired
-        private AccountManager accountManager;
+
+        private final ServiceManager serviceManager;
+        private final AccountManager accountManager;
+
         public Map<AccountInfo, List<ServiceDetails>> getAccountWithServices(){
             Map<AccountInfo,List<ServiceDetails>> map =  new HashMap<>();
             List<AccountInfo> accountInfos = accountManager.getActiveAccounts();
