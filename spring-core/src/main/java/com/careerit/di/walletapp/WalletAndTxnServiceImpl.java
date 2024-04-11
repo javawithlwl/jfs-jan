@@ -10,6 +10,7 @@ import java.util.List;
 public class WalletAndTxnServiceImpl implements WalletAndTxnService{
 
     private final TransactionService transactionService;
+    private final WalletService walletService;
     @Override
     public Wallet createWallet(Wallet wallet) {
         return null;
