@@ -4,33 +4,42 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class WalletAndTxnServiceImpl implements WalletAndTxnService{
 
     private final TransactionService transactionService;
+    private final WalletService walletService;
     @Override
     public Wallet createWallet(Wallet wallet) {
-        return null;
+        return walletService.createWallet(wallet);
     }
 
     @Override
-    public Wallet transferAmount(String fromMobile, String toMobile, double amount) {
-        // get the wallet object for fromMobile and toMobile
-        // check the balance of fromMobile wallet object
-        // if balance is less than amount then throw exception
-        // deduct the amount from fromMobile wallet object
-        // add the amount to toMobile wallet object
-        // add the transaction details to the list
-        return null;
+    public void transferAmount(String fromMobile, String toMobile, double amount) {
+        Optional<Wallet> fromWallet = walletService.getWalletByMobile(fromMobile);
+        Optional<Wallet> toWallet = walletService.getWalletByMobile(toMobile);
+
+        if(fromWallet.isPresent() && toWallet.isPresent()) {
+            Wallet from = fromWallet.get();
+            Wallet to = toWallet.get();
+            if (from.getBalance() >= amount) {
+                from.setBalance(from.getBalance() - amount);
+                to.setBalance(to.getBalance() + amount);
+                transactionService.addTransaction(fromMobile, toMobile, amount);
+                System.out.println("Amount transferred successfully from : " + fromMobile + " to : " + toMobile);
+            } else {
+                throw new RuntimeException("Insufficient balance in the wallet : " + fromMobile);
+            }
+        }else {
+            throw new RuntimeException("From or To wallet is not present");
+        }
     }
 
     @Override
     public List<TransactionDetails> getTransactions(String mobile) {
-        // check the wallet object for the given mobile number
-        // if wallet object is not present then throw exception
-        // get all the transactions for the given mobile number
-        return null;
+        return transactionService.getAllTransactions(mobile);
     }
 }
