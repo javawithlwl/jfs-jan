@@ -16,14 +16,14 @@ public class WalletAndTxnServiceImpl implements WalletAndTxnService{
     }
 
     @Override
-    public Wallet transferAmount(String fromMobile, String toMobile, double amount) {
+    public void transferAmount(String fromMobile, String toMobile, double amount) {
         // get the wallet object for fromMobile and toMobile
         // check the balance of fromMobile wallet object
         // if balance is less than amount then throw exception
         // deduct the amount from fromMobile wallet object
         // add the amount to toMobile wallet object
         // add the transaction details to the list
-        return null;
+
     }
 
     @Override

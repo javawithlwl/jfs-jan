@@ -15,7 +15,7 @@ public class WalletServiceImpl implements  WalletService{
 
     private final IdGenerator idGenerator;
     @Override
-    public String createWallet(Wallet wallet) {
+    public Wallet createWallet(Wallet wallet) {
         // Generate the id and set it to wallet object; then persist the wallet object to the list
         // With the given mobile number; if wallet already exists then throw exception
         return null;
