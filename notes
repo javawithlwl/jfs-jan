@@ -20,3 +20,8 @@ create database lwl_db
 
 create user 'dbuser'@'%' identified by 'dbuser';
 GRANT ALL PRIVILEGES ON *.* TO 'dbuser'@'%' WITH GRANT OPTION;
+
+
+Datasource:
+
+        JdbcTemplate
