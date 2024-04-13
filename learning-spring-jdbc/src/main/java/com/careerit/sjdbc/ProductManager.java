@@ -8,6 +8,25 @@ public class ProductManager {
         showProductDetails();
     }
 
+
+    public static void showProduct(){
+        Statement st = null;
+        ResultSet rs = null;
+        Connection con = null;
+        try {
+            con = getConnection();
+            st = con.createStatement();
+            rs = st.executeQuery("select count(*) as c from product");
+            if (rs.next()) {
+                int cont = rs.getInt("c");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            close(rs,st,con);
+        }
+    }
+
     public static void showProductDetails(){
         Statement st = null;
         ResultSet rs = null;
