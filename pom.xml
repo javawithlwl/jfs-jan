@@ -16,6 +16,7 @@
         <module>ipl-stats</module>
         <module>spring-core</module>
         <module>learning-spring-jdbc</module>
+        <module>learning-spring-boot</module>
     </modules>
 
     <properties>
