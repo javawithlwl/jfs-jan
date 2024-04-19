@@ -17,6 +17,8 @@
         <module>spring-core</module>
         <module>learning-spring-jdbc</module>
         <module>learning-spring-boot</module>
+        <module>learning-spring-jpa</module>
+
     </modules>
 
     <properties>
