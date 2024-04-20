@@ -7,31 +7,38 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Entity
-@Table(name = "contact_details")
+@Table(name = "contact")
 @Getter
 @Setter
-public class Contact {
+public class Contact extends BaseEntity{
 
     @Id
-    private UUID cid;
-    @Column(name = "c_name")
+    private UUID id;
+    @Column(name = "name")
     private String name;
     @Column(name = "email")
     private String email;
     @Column(name = "mobile")
     private String mobile;
+    @Column(name = "city")
+    private String city;
+
 
     public Contact() {
     }
 
-    public Contact(String name, String email, String mobile) {
+    public Contact(String name, String email, String mobile, String city) {
         this.name = name;
         this.email = email;
         this.mobile = mobile;
+        this.city = city;
     }
 
     @PrePersist
-    public void init(){
-        this.cid = UUID.randomUUID();
+    public void onPrePersist(){
+        this.id = UUID.randomUUID();
+        super.onPrePersist();
     }
+
+
 }

@@ -25,3 +25,17 @@ GRANT ALL PRIVILEGES ON *.* TO 'dbuser'@'%' WITH GRANT OPTION;
 Datasource:
 
         JdbcTemplate
+
+
+        user:
+
+            id
+            name
+            email
+            password
+            deleted
+            created_at
+            modified_at
+
+        persist data into database using jpa
+
