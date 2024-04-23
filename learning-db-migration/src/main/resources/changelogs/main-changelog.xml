@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="1" author="careerit">
+        <sqlFile path="/changelogs/sql-scripts/1_init_script.sql"/>
+    </changeSet>
+
+    <changeSet id="2" author="lwl">
+        <sqlFile path="/changelogs/sql-scripts/2_alter_player_details.sql"/>
+    </changeSet>
+
+    <changeSet id="3" author="lwl">
+        <sqlFile path="/changelogs/sql-scripts/2024-04/3_insert_seed_data.sql"/>
+    </changeSet>
+
+    <changeSet id="4" author="careerit">
+        <sqlFile path="/changelogs/sql-scripts/2024-04/4_user_create_table.sql" stripComments="true" splitStatements="true"/>
+    </changeSet>
+    <changeSet id="5" author="careerit">
+        <sqlFile path="/changelogs/sql-scripts/2024-04/5_insert_user_data.sql" stripComments="true" splitStatements="true"/>
+    </changeSet>
+
+</databaseChangeLog>

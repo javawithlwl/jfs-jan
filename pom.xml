@@ -18,6 +18,7 @@
         <module>learning-spring-jdbc</module>
         <module>learning-spring-boot</module>
         <module>learning-spring-jpa</module>
+        <module>learning-db-migration</module>
 
     </modules>
 
