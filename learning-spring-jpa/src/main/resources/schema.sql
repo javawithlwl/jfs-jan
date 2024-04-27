@@ -17,3 +17,13 @@ create table app_user(
     primary key(id)
 
 );
+
+create table if not exists player_details(
+    id UUID,
+    name varchar(255),
+    role varchar(255),
+    country varchar(255),
+    team varchar(255),
+    amount float,
+    primary key(id)
+);

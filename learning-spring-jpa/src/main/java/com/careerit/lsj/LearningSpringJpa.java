@@ -1,15 +1,19 @@
 package com.careerit.lsj;
 
-import com.careerit.lsj.cbook.Contact;
 import com.careerit.lsj.cbook.ContactRepo;
 import com.careerit.lsj.cbook.UserRepo;
+import com.careerit.lsj.iplstats.Course;
+import com.careerit.lsj.iplstats.CourseRepo;
+import com.careerit.lsj.iplstats.Student;
+import com.careerit.lsj.iplstats.StudentRepo;
+import com.careerit.lsj.playerstats.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 
 @SpringBootApplication
 public class LearningSpringJpa implements CommandLineRunner {
@@ -20,6 +24,16 @@ public class LearningSpringJpa implements CommandLineRunner {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private CourseRepo courseRepo;
+    @Autowired
+    private StudentRepo studentRepo;
+
+    @Autowired
+    private PlayerService playerService;
+
+    @Autowired
+    private PlayerDataMigration playerDataMigration;
     public static void main(String[] args) {
         SpringApplication.run(LearningSpringJpa.class, args);
     }
@@ -69,10 +83,10 @@ public class LearningSpringJpa implements CommandLineRunner {
 
         /*System.out.println("----------------- Find all contacts -------------------");*/
 
-        List<Contact> contacts = contactRepo.findAll();
+      /*  List<Contact> contacts = contactRepo.findAll();
         contacts.forEach(c->{
             System.out.println(c.getId() + " : "+c.getName() + " : "+c.getEmail() + " : "+c.getMobile()+" : "+c.getCity()+" : "+c.isDeleted());
-        });
+        });*/
 
         // Delete contact by id if exists
 
@@ -100,9 +114,61 @@ public class LearningSpringJpa implements CommandLineRunner {
                 });
 */
 
-        long count = contactRepo.count();
+/*        long count = contactRepo.count();
         System.out.println("Total contacts : "+count);
 
-        contactRepo.softDeleteById(UUID.fromString("73928890-bcf8-4388-8359-fef57cccaa39"));
+        contactRepo.softDeleteById(UUID.fromString("73928890-bcf8-4388-8359-fef57cccaa39"));*/
+
+        /*Student student = new Student();
+        student.setName("Krish");
+        studentRepo.save(student);*/
+
+       /* Course course = new Course();
+        course.setName(".Python");
+        course.setFee(25000.0);
+        courseRepo.save(course);*/
+
+        /*addAllCoursesToStudent(1L);*/
+        /*addCourseToStudent(2L, List.of(1L,3L));*/
+
+       /* List<PlayerDetails> players = playerDataMigration.migrate();
+        players.forEach(p->{
+            System.out.println(p.getId() + " : "+p.getName() + " : "+p.getRole() + " : "+p.getCountry() + " : "+p.getTeam() + " : "+p.getAmount());
+        });*/
+
+        List<PlayerDetailsDto> playerDetails = playerService.getPlayersOf("RCB");
+        playerDetails.forEach(p->{
+            System.out.println(p.getId() + " : "+p.getName() + " : "+p.getRole() + " : "+p.getCountry() + " : "+p.getTeam() + " : "+p.getAmount());
+        });
+
+        System.out.println("Teams : "+playerService.getTeams());
+
+        List<TeamCountTotalAmountRecord> teamCountTotalAmountRecords = playerService.getTeamCountTotalAmount();
+        teamCountTotalAmountRecords.forEach(t->{
+            System.out.println(t.team() + " : "+t.count() + " : "+t.totalAmount());
+        });
+
+        List<PlayerDetailsDto> topPaidPlayersOfEachTeam = playerService.getTopPaidPlayersOfEachTeam();
+        topPaidPlayersOfEachTeam.forEach(p->{
+            System.out.println(p.getId() + " : "+p.getName() + " : "+p.getRole() + " : "+p.getCountry() + " : "+p.getTeam() + " : "+p.getAmount());
+        });
+    }
+
+    @Transactional
+    public void addAllCoursesToStudent(long studentId) {
+        Student student = studentRepo.findById(studentId).orElseThrow(() -> new RuntimeException("Student not found with id : " + studentId));
+        List<Course> courses = courseRepo.findAll();
+        for(Course course:courses) {
+            student.getCourses().add(course);
+        }
+        studentRepo.save(student);
+    }
+
+    @Transactional
+    public void addCourseToStudent(long studentId, List<Long> courseIds) {
+        Student student = studentRepo.findById(studentId).orElseThrow(() -> new RuntimeException("Student not found with id : " + studentId));
+        List<Course> courses = courseRepo.findAllById(courseIds);
+        student.addCourses(courses);
+        studentRepo.save(student);
     }
 }
